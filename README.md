@@ -1,5 +1,5 @@
 <p align="center">
-<img alt="my banner" width="100%" src="https://github.com/anew226/anew226/blob/main/assets/images/MyBanner.JPG?raw=true">
+<img alt="my banner" width="100%" src="https://github.com/anew226/anew226/blob/main/assets/pics/MyBanner.JPG?raw=true">
 </p>
 
 <p align="center">Hi, I'm Andrew</p>
