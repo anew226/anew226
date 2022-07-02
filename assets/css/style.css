@@ -2,7 +2,6 @@
   --accent-color: rgb(103, 103, 255);
   --fg-color: rgba(39, 31, 31, 0.9);
   --bg-color: rgb(255, 255, 255);
-  /* --bg-color: rgb(232, 235, 255); */
   --bg-color-default-header: rgb(49, 137, 208);
   --nav-bg-color: #b5d8ff;
   --highlight-primary: #90b7ff;
@@ -10,21 +9,146 @@
     linear-gradient(600deg, #7768ff, rgba(186, 74, 255, 0) 70%), 
     linear-gradient(100deg, #67acfb, rgba(0, 138, 255, 0) 70%),
     linear-gradient(355deg, #97ffcb, rgba(0, 255, 198, 0) 74%);
-  --nav-height: 3rem;
+  --nav-height: 2.2rem;
+  --logo-height: 3.5rem;
   --icon-height: 1.5rem;
+  --home-height: 2.0rem;
 
   --transition: 250ms ease-out;  
   --transition-long: 500ms ease-out; 
 }
 
-article {
-  margin: 50px;
+article img {
+  height: 350px;
+  object-fit: cover;
+  object-position: top;
+  width: 100%;
+  box-shadow: 1px 1px 5px grey;
+
+}
+
+article h1 {
+  margin-bottom: 0.5rem;
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  color: blue;
+  text-decoration: underline;
+}
+
+/* styles for posts */
+.post_head article {
+  width: 80%;
+  background-color: #67acfb00;
+  color: white;
+  text-shadow: var(--accent-color) 1px 1px 0px;
+  text-shadow: black 1px 1px 8px;
+}
+
+.post_head p {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+date {
+  color: white;
+  background-color: darkgrey;
+  border-radius: 0.2rem;
+  font-size: 0.9rem;
+  display: inline-block;
+  padding: 3px 6px;
+}
+
+.post_head {
+  display: flex;
+  align-items: flex-end;
+  height: 450px;
+}
+
+.post {
+  display: inline;
+}
+
+.post h2 {
+  color: var(--accent-color);
+  font-size: 1.8rem;
+  margin: 60px 0 2px 0;
+}
+
+.post h3 {
+  color: var(--accent-color);
+  font-size: 1.4rem;
+}
+
+.post article {
+  margin: 0 auto;
+  width: 70%;
+  max-width: 800px;
+}
+
+.post article p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.post article p:first-of-type::first-letter {
+  font-size: 2.2rem;
+}
+
+.post blockquote p:first-of-type::first-letter{
+  font-size: inherit;
+}
+
+.post img {
+  /* width: 102px; */
+  height: auto;
+}
+
+.post blockquote {
+  border-left: 5px solid var(--accent-color);
+  border-radius: 0.2rem;
+  margin-left: 15px;
+  padding-left: 10px;
+}
+/* end styles for posts */
+
+section article {
+  background-color: white; 
+  padding: 15px;
+  width: 30%;
+}
+
+.main article p {
+  text-align: center;
+}
+
+.main article {
+  width: 70%;
+}
+
+section main {
+  height: 100vh;
+  background: var(--bg-color-default-header);
+  background-image: url("https://airplanes.itsabouttravelling.com/wp-content/uploads/2017/06/n403ua-united-airlines-airbus-a320-02.jpg");
+  background-repeat: no-repeat;
+  background-position: top;
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
 }
 
 section {
-  /* width: 100%; */
-  height: 100%;
-  background: var(--bg-color-default-header);
+  width: 100%; 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center; 
 }
 
 html, body {
@@ -44,14 +168,7 @@ nav a img {
   height: var(--icon-height);
 }
 
-article img {
-  max-width: 400px;
-  width: 100%;
-  box-shadow: 1px 1px 5px grey;
-}
-
 body {
-  /* display: flex; */
   justify-content: center;
 
   padding: 0;
@@ -63,18 +180,8 @@ body {
   color: var(--fg-color);
 }
 
-main {
-  background-image: url("https://airplanes.itsabouttravelling.com/wp-content/uploads/2017/06/n403ua-united-airlines-airbus-a320-02.jpg");
-  background-repeat: no-repeat;
-  background-position: top;
-  background-attachment: fixed;
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-}
-
 footer {
-  height: 200px;
+  height: 75px;
   background-color: black;
 }
 
@@ -88,10 +195,10 @@ main h1 {
   color: white;
   display: block;
   font-family: 'Courier New', Courier, monospace;
-  font-size: 2.8rem;
+  font-size: 2.6rem;
   width: 400px;
   margin: 0 auto;
-  padding-top: 40px;
+  /* padding-top: 10px; */
   text-shadow: 0 0 1px var(--fg-color);
 }
 
@@ -99,12 +206,17 @@ main h2 {
   color: white;
   font-family: 'Courier New', Courier, monospace;
   position: absolute;
-  top: 50px; left: 20px;
+  top: 50px; left: 70px;
 }
 
 h3 {
   font-size: 2.6rem;
   margin-bottom: 2px;
+}
+
+.posts h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
 }
 
 header {
@@ -128,33 +240,10 @@ header {
   z-index: 1;
 }
 
-/* .logo { */
-  /* width: var(--nav-height); */
-  /* display: grid; */
-  /* place-content: center; */
-
-  /* padding: 0rem 1rem; */
-
-  /* color: var(--highlight-primary); */
-/* } */
-
 .logo img {
-  margin-left: 10px;
-  height: var(--nav-height);
+  margin: 10px 0 0 10px;
+  height: var(--logo-height);
 }
-
-/* .logo img:hover {
-  box-shadow: 0 0 4px white;
-} */
-
-/* .logo > i {
-  border-top-left-radius: 50%;
-  border-bottom-right-radius: 50%;
-  padding: 0.25rem;
-
-  background: var(--highlight-primary);
-  color: var(--bg-color);
-} */
 
 header ul {
   display: grid;
@@ -184,11 +273,17 @@ header a {
   transition: background-color var(--transition);
 }
 
-.logo a:first-of-type {
+.home img {
+  margin-left: 10px;
+  margin-top: 0.2rem;
+  height: var(--home-height);
+}
+
+.home a:first-of-type {
   padding: 0;
 }
 
-.logo a:hover {
+.home a:hover {
   background-color: inherit;
 }
 
@@ -222,10 +317,27 @@ header a:hover > i {
   display: none;
 }
 
+@media screen and (max-width: 1002px) {
+  section article {
+    width: 40%;
+  }
+}
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 750px) {
   body {
     justify-content: right;
+  }
+
+  .post_head article {
+    width: 100%;
+  }
+
+  .post article {
+    width: 90%;
+  }
+
+  section article {
+    width: 90%;
   }
 
   main h1 {
@@ -242,12 +354,9 @@ header a:hover > i {
     position: fixed;
     top: 0;
     bottom: 0;
-    /* width: 24rem; */
     width: 80%;
     min-width: 300px;
     right: 0rem;
-    /* height: 700px; */
-
     padding-top: var(--nav-height);
     clip-path: circle(
         calc(var(--nav-height) / 3)
@@ -274,12 +383,8 @@ header a:hover > i {
   }
 
   header a {
-    border: 1px solid var(--nav-bg-color);
     box-shadow: 0 0 4px var(--bg-color);
-
     place-content: flex-start;
-
-    /* padding: 0.5rem 1.5rem; */
     padding: 0.3rem;
   }
 
@@ -287,10 +392,6 @@ header a:hover > i {
     border: none;
     box-shadow: none;
   }
-
-  /* header a > i {
-    color: var(--bg-color);
-  } */
 
   header a:hover {
     background-color: var(--nav-bg-color);
