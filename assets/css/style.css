@@ -55,6 +55,12 @@ a:hover, a:focus {
   font-weight: bold;
 }
 
+.post_head {
+  /* position background image */
+  background-position: center center;
+  background-size: cover;
+}
+
 date {
   color: white;
   background-color: darkgrey;
