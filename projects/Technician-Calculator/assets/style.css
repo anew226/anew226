@@ -1,0 +1,196 @@
+body {
+    background-color: rgb(231, 233, 241); 
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    /* get rid of padding and margin of browser */ 
+    margin: 0;
+    padding: 0;
+}
+
+
+h2 {
+    color: black;
+    font-size: 2.2rem;
+    text-shadow: grey 1px 0 1px;
+}
+
+header nav{
+    background-color: rgba(190, 200, 211, 0.616);
+    height: 43px;
+    box-shadow: grey 1px 1px 2px;
+    display: flex;
+}
+
+nav ul {
+    margin: 0 8px;
+    padding: 5px;
+    list-style-type: none;
+}
+
+nav li { 
+    display: inline-block;
+
+} 
+
+section p {
+    font-size: 1.2rem;
+    margin: 20px 0 0 0;
+}
+
+h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+input {
+    font-size: larger;
+    text-align: center;
+}
+
+.calculations {
+    padding-top: 5px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.calculations div {
+    background-color: rgb(255, 242, 200);
+    border: 1px solid black;
+    border-radius: 30px;
+    box-shadow: grey 1px 1px 5px;
+    height: 430px;
+    text-align: center;
+    margin: 12px;
+    width: 390px;
+}
+
+.graph_results {
+    background-color: rgb(40, 31, 78);
+    box-sizing: border-box;
+    color: white;
+    display: block;
+    font-family: monospace;
+    font-size: 1.8rem;
+    height: 7rem;
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+}
+
+.select:hover {
+    background-color: rgb(243, 239, 235);
+    cursor: pointer;
+    box-shadow: grey 0 0 3px;
+}
+
+.select {
+    background-color: rgb(250, 245, 240);
+    border: 1px solid black;
+    font-family: inherit; 
+    font-size: 1.5rem;
+}
+
+.unitDescriptions h2 {
+    display: none;
+    text-align: center; 
+}
+
+.hr_DistOverTime {
+    width: 200px;
+    margin: 1px auto;
+}
+
+.hr_lvdt {
+    width: 80px;
+    margin: 1px auto;
+}
+
+.hr_DampingCoeff {
+    width: 80px;
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+.denominator {
+    margin-top: 0;
+}
+
+.formulaDisplay {
+    background-color: rgb(40, 31, 78);
+    border-radius: 20px;
+    color: white;
+    height: 62px;
+    margin: 0 50px;
+}
+
+.FP1, .FP2 {
+    position: relative;
+    top: 10px;
+}
+
+.speed, .lvdt {
+    position: relative;
+    top: 7px;
+}
+
+.K {
+    position: relative;
+    top: 25px;
+    right: 45px;
+    display: inline;
+    line-height: 0;
+}
+
+.dampCoef {
+    position: relative;
+    top: -18px;
+    right: -20px;
+}
+
+.Force {
+    margin: 0;
+}
+
+section .show {
+    display: block
+}
+
+#home:hover, #clear:hover {
+    background-color: rgb(47, 2, 129);
+    cursor: pointer;
+    box-shadow: grey 0 0 3px;
+    color: white
+}
+
+#home:active {
+    font-size: 1.45rem;
+    margin: 0 1px;
+}
+
+#clear:active {
+    font-size: 1.45rem;
+}
+
+#home, #clear  {
+    background-color: rgb(250, 245, 240);
+    border: 1px solid black;
+    font-family: inherit; 
+    font-size: 1.5rem;
+    line-height: 1.15;
+    margin: 0;
+    overflow: visible;
+    text-transform: none;
+    -webkit-appearance: button;
+}
+
+#clear {
+    margin-left: 15px;
+}
+
+#speed, #lvdt, #sealFriction, #dampingCoefficient, #null_282700, #null_282800, #null_282900, #null_283200, #graph {
+    display: none;
+}
+
+#accuracy {
+    font-size: 2.0rem;
+}

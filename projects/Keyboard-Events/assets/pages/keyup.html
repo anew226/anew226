@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<!-- Default HTML 5 Boilerplate (Feb 2021) -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/keyup.css">
+  <link rel="shortcut icon" type="image/png" href="..\pics\favicon.png"/>
+  <title>Keyup Events</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="..\..\index.html">Home</a></li>
+        <li><a href="keydown.html">Keydown</a></li>
+        <li><a href="keypress.html">Keypress</a></li>
+        <li><a href="#">Keyup</a></li>
+      </ul>
+    </nav>
+    <h1>Keyup()</h1>
+  </header>
+  <article>
+    <form>
+      <label for="CharInput">input:</label>
+      <input autofocus type="text" spellcheck="false" name="character input" id="CharInput_ku" placeholder="user input">
+    </form>
+
+    <div class="box">
+      <div class="row">
+        <div class="current" data-hover="Use 'key' or 'code'">
+          <p>key: <span id="key"></span></p>
+          <p>code: <span id="code"></span></p>
+        </div>
+        <div class="deprecated" data-hover="Deprecated! Do not use 'which', 'keyCode', or 'charCode'">
+          <p>which: <span id="which"></span></p>
+          <p>keyCode: <span id="keyCode"></span></p>
+          <p>charCode: <span id="charCode"></span></p>
+        </div>
+        <p>HTML Char Code: <span id="HTML"></span></p>
+      </div>
+      <div class="row">
+        <p>Special Description: <span id="specialChar"></span></p>
+      </div>
+      <div class="row">
+        <printHTMLCode id="printHTMLCode"></printHTMLCode>
+      </div>
+    </div>
+  </article>
+
+  <section>
+    <article>
+      <h2>Charts for keyup()</h2>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">input</th>
+            <th scope="col">code</th>
+            <th scope="col">which</th>
+            <th scope="col">key</th>
+            <th scope="col">html</th>
+            <th scope="col">descr</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tab</td>
+            <td colspan="4">*no event registered</td>
+          </tr>
+          <tr>
+            <td>Enter</td>
+            <td>Enter</td>
+            <td>13</td>
+            <td>Enter</td>
+            <td>&amp;#13;</td>
+            <td>carriage return</td>
+          </tr>
+          <tr>
+            <td>space</td>
+            <td>Space</td>
+            <td>32</td>
+            <td></td>
+            <td>&amp;#32;</td>
+            <td>space bar</td>
+          </tr>
+          <tr>
+            <td>!</td>
+            <td>Digit1</td>
+            <td>49</td>
+            <td>!</td>
+            <td>&amp;#33;</td>
+            <td>exclamation mark</td>
+          </tr>
+          <tr>
+            <td>"</td>
+            <td>Quote</td>
+            <td>222</td>
+            <td>"</td>
+            <td>&amp;#34;</td>
+            <td>double quote</td>
+          </tr>
+          <tr>
+            <td>#</td>
+            <td>Digit3</td>
+            <td>51</td>
+            <td>#</td>
+            <td>&amp;#35;</td>
+            <td>number</td>
+          </tr>
+          <tr>
+            <td>$</td>
+            <td>Digit4</td>
+            <td>52</td>
+            <td>$</td>
+            <td>&amp;#36;</td>
+            <td>dollar</td>
+          </tr>
+          <tr>
+            <td>%</td>
+            <td>Digit5</td>
+            <td>53</td>
+            <td>%</td>
+            <td>&amp;#37;</td>
+            <td>percent</td>
+          </tr>
+          <tr>
+            <td>&</td>
+            <td>Digit7</td>
+            <td>55</td>
+            <td>&</td>
+            <td>&amp;#38;</td>
+            <td>ampersand</td>
+          </tr>
+          <tr>
+            <td>'</td>
+            <td>Quote</td>
+            <td>222</td>
+            <td>'</td>
+            <td>&amp;#39;</td>
+            <td>single quote</td>
+          </tr>
+          <tr>
+            <td>(</td>
+            <td>Digit9</td>
+            <td>57</td>
+            <td>(</td>
+            <td>&amp;#40;</td>
+            <td>left parenthesis</td>
+          </tr>
+          <tr>
+            <td>)</td>
+            <td>Digit0</td>
+            <td>48</td>
+            <td>)</td>
+            <td>&amp;#41;</td>
+            <td>right parenthesis</td>
+          </tr>
+          <tr>
+            <td>*</td>
+            <td>Digit8</td>
+            <td>56</td>
+            <td>*</td>
+            <td>&amp;#42;</td>
+            <td>asterisk</td>
+          </tr>
+          <tr>
+            <td>+</td>
+            <td>Equal</td>
+            <td>187</td>
+            <td>+</td>
+            <td>&amp;#43;</td>
+            <td>plus</td>
+          </tr>
+          <tr>
+            <td>,</td>
+            <td>Comma</td>
+            <td>188</td>
+            <td>,</td>
+            <td>&amp;#44;</td>
+            <td>comma</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>Minus</td>
+            <td>189</td>
+            <td>-</td>
+            <td>&amp;#45;</td>
+            <td>minus</td>
+          </tr>
+          <tr>
+            <td>.</td>
+            <td>Period</td>
+            <td>190</td>
+            <td>.</td>
+            <td>&amp;#46;</td>
+            <td>period</td>
+          </tr>
+          <tr>
+            <td>/</td>
+            <td>Slash</td>
+            <td>191</td>
+            <td>/</td>
+            <td>&amp;#47;</td>
+            <td>slash</td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>Digit</td>
+            <td>48</td>
+            <td>0</td>
+            <td>&amp;#48;</td>
+            <td>zero</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Digit</td>
+            <td>49</td>
+            <td>1</td>
+            <td>&amp;#49;</td>
+            <td>one</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Digit</td>
+            <td>50</td>
+            <td>2</td>
+            <td>&amp;#50;</td>
+            <td>two</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Digit3</td>
+            <td>51</td>
+            <td>3</td>
+            <td>&amp;#51;</td>
+            <td>three</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Digit4</td>
+            <td>52</td>
+            <td>4</td>
+            <td>&amp;#52;</td>
+            <td>four</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Digit5</td>
+            <td>53</td>
+            <td>5</td>
+            <td>&amp;#53;</td>
+            <td>five</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Digit6</td>
+            <td>54</td>
+            <td>6</td>
+            <td>&amp;#54;</td>
+            <td>six</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Digit7</td>
+            <td>55</td>
+            <td>7</td>
+            <td>&amp;#55;</td>
+            <td>seven</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Digit8</td>
+            <td>56</td>
+            <td>8</td>
+            <td>&amp;#56;</td>
+            <td>eight</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Digit9</td>
+            <td>57</td>
+            <td>9</td>
+            <td>&amp;#57;</td>
+            <td>nine</td>
+          </tr>
+          <tr>
+            <td>:</td>
+            <td>Semicolon</td>
+            <td>186</td>
+            <td>:</td>
+            <td>&amp;#58;</td>
+            <td>colon</td>
+          </tr>
+          <tr>
+            <td>;</td>
+            <td>Semicolon</td>
+            <td>186</td>
+            <td>;</td>
+            <td>&amp;#59;</td>
+            <td>semicolon</td>
+          </tr>
+          <tr>
+            <td>&#60;</td>
+            <td>Comma</td>
+            <td>188</td>
+            <td>&#60;</td>
+            <td>&amp;#60;</td>
+            <td>less than</td>
+          </tr>
+          <tr>
+            <td>=</td>
+            <td>Equal</td>
+            <td>187</td>
+            <td>=</td>
+            <td>&amp;#61;</td>
+            <td>equals</td>
+          </tr>
+          <tr>
+            <td>&#62;</td>
+            <td>Period</td>
+            <td>190</td>
+            <td>&#62;</td>
+            <td>&amp;#62;</td>
+            <td>greater than</td>
+          </tr>
+          <tr>
+            <td>?</td>
+            <td>Slash</td>
+            <td>191</td>
+            <td>?</td>
+            <td>&amp;#63;</td>
+            <td>question mark</td>
+          </tr>
+          <tr>
+            <td>@</td>
+            <td>Digit2</td>
+            <td>50</td>
+            <td>@</td>
+            <td>&amp;#64;</td>
+            <td>at sign</td>
+          </tr>
+          <tr>
+            <td>A</td>
+            <td>KeyA</td>
+            <td>65</td>
+            <td>A</td>
+            <td>&amp;#65;</td>
+            <td>uppercase A</td>
+          </tr>
+          <tr>
+            <td>B</td>
+            <td>KeyB</td>
+            <td>66</td>
+            <td>B</td>
+            <td>&amp;#66;</td>
+            <td>uppercase B</td>
+          </tr>
+          <tr>
+            <td>C</td>
+            <td>KeyC</td>
+            <td>67</td>
+            <td>C</td>
+            <td>&amp;#67;</td>
+            <td>uppercase C</td>
+          </tr>
+          <tr>
+            <td>D</td>
+            <td>KeyD</td>
+            <td>68</td>
+            <td>D</td>
+            <td>&amp;#68;</td>
+            <td>uppercase D</td>
+          </tr>
+          <tr>
+            <td>E</td>
+            <td>KeyE</td>
+            <td>69</td>
+            <td>E</td>
+            <td>&amp;#69;</td>
+            <td>uppercase E</td>
+          </tr>
+          <tr>
+            <td>F</td>
+            <td>KeyF</td>
+            <td>70</td>
+            <td>F</td>
+            <td>&amp;#70;</td>
+            <td>uppercase F</td>
+          </tr>
+          <tr>
+            <td>G</td>
+            <td>KeyG</td>
+            <td>71</td>
+            <td>G</td>
+            <td>&amp;#71;</td>
+            <td>uppercase G</td>
+          </tr>
+          <tr>
+            <td>H</td>
+            <td>KeyH</td>
+            <td>72</td>
+            <td>H</td>
+            <td>&amp;#72;</td>
+            <td>uppercase H</td>
+          </tr>
+          <tr>
+            <td>I</td>
+            <td>KeyI</td>
+            <td>73</td>
+            <td>I</td>
+            <td>&amp;#73;</td>
+            <td>uppercase I</td>
+          </tr>
+          <tr>
+            <td>J</td>
+            <td>KeyJ</td>
+            <td>74</td>
+            <td>J</td>
+            <td>&amp;#74;</td>
+            <td>uppercase J</td>
+          </tr>
+          <tr>
+            <td>K</td>
+            <td>KeyK</td>
+            <td>75</td>
+            <td>K</td>
+            <td>&amp;#75;</td>
+            <td>uppercase K</td>
+          </tr>
+          <tr>
+            <td>L</td>
+            <td>KeyL</td>
+            <td>76</td>
+            <td>L</td>
+            <td>&amp;#76;</td>
+            <td>uppercase L</td>
+          </tr>
+          <tr>
+            <td>M</td>
+            <td>KeyM</td>
+            <td>77</td>
+            <td>M</td>
+            <td>&amp;#77;</td>
+            <td>uppercase M</td>
+          </tr>
+          <tr>
+            <td>N</td>
+            <td>KeyN</td>
+            <td>78</td>
+            <td>N</td>
+            <td>&amp;#78;</td>
+            <td>uppercase N</td>
+          </tr>
+          <tr>
+            <td>O</td>
+            <td>KeyO</td>
+            <td>79</td>
+            <td>O</td>
+            <td>&amp;#79;</td>
+            <td>uppercase O</td>
+          </tr>
+          <tr>
+            <td>P</td>
+            <td>KeyP</td>
+            <td>80</td>
+            <td>P</td>
+            <td>&amp;#80;</td>
+            <td>uppercase P</td>
+          </tr>
+          <tr>
+            <td>Q</td>
+            <td>KeyQ</td>
+            <td>81</td>
+            <td>Q</td>
+            <td>&amp;#81;</td>
+            <td>uppercase Q</td>
+          </tr>
+          <tr>
+            <td>R</td>
+            <td>KeyR</td>
+            <td>82</td>
+            <td>R</td>
+            <td>&amp;#82;</td>
+            <td>uppercase R</td>
+          </tr>
+          <tr>
+            <td>S</td>
+            <td>KeyS</td>
+            <td>83</td>
+            <td>S</td>
+            <td>&amp;#83;</td>
+            <td>uppercase S</td>
+          </tr>
+          <tr>
+            <td>T</td>
+            <td>KeyT</td>
+            <td>84</td>
+            <td>T</td>
+            <td>&amp;#84;</td>
+            <td>uppercase T</td>
+          </tr>
+          <tr>
+            <td>U</td>
+            <td>KeyU</td>
+            <td>85</td>
+            <td>U</td>
+            <td>&amp;#85;</td>
+            <td>uppercase U</td>
+          </tr>
+          <tr>
+            <td>V</td>
+            <td>KeyV</td>
+            <td>86</td>
+            <td>V</td>
+            <td>&amp;#86;</td>
+            <td>uppercase V</td>
+          </tr>
+          <tr>
+            <td>W</td>
+            <td>KeyW</td>
+            <td>87</td>
+            <td>W</td>
+            <td>&amp;#87;</td>
+            <td>uppercase W</td>
+          </tr>
+          <tr>
+            <td>X</td>
+            <td>KeyX</td>
+            <td>88</td>
+            <td>X</td>
+            <td>&amp;#88;</td>
+            <td>uppercase X</td>
+          </tr>
+          <tr>
+            <td>Y</td>
+            <td>KeyY</td>
+            <td>89</td>
+            <td>Y</td>
+            <td>&amp;#89;</td>
+            <td>uppercase Y</td>
+          </tr>
+          <tr>
+            <td>Z</td>
+            <td>KeyZ</td>
+            <td>90</td>
+            <td>Z</td>
+            <td>&amp;#90;</td>
+            <td>uppercase Z</td>
+          </tr>
+          <tr>
+            <td>[</td>
+            <td>BracketLeft</td>
+            <td>219</td>
+            <td>[</td>
+            <td>&amp;#91;</td>
+            <td>left square bracket</td>
+          </tr>
+          <tr>
+            <td>\</td>
+            <td>Backslash</td>
+            <td>220</td>
+            <td>\</td>
+            <td>&amp;#92;</td>
+            <td>backslash</td>
+          </tr>
+          <tr>
+            <td>]</td>
+            <td>BracketRight</td>
+            <td>221</td>
+            <td>]</td>
+            <td>&amp;#93;</td>
+            <td>right square bracket</td>
+          </tr>
+          <tr>
+            <td>^</td>
+            <td>Digit6</td>
+            <td>54</td>
+            <td>^</td>
+            <td>&amp;#94;</td>
+            <td>caret / circumflex</td>
+          </tr>
+          <tr>
+            <td>_</td>
+            <td>Minus</td>
+            <td>189</td>
+            <td>_</td>
+            <td>&amp;#95;</td>
+            <td>underscore</td>
+          </tr>
+          <tr>
+            <td>`</td>
+            <td>Backquote</td>
+            <td>192</td>
+            <td>`</td>
+            <td>&amp;#96;</td>
+            <td>grave / accent / backtick</td>
+          </tr>
+          <tr>
+            <td>a</td>
+            <td>KeyA</td>
+            <td>65</td>
+            <td>a</td>
+            <td>&amp;#97;</td>
+            <td>lowercase a</td>
+          </tr>
+          <tr>
+            <td>b</td>
+            <td>KeyB</td>
+            <td>66</td>
+            <td>b</td>
+            <td>&amp;#98;</td>
+            <td>lowercase b</td>
+          </tr>
+          <tr>
+            <td>c</td>
+            <td>KeyC</td>
+            <td>67</td>
+            <td>c</td>
+            <td>&amp;#99;</td>
+            <td>lowercase c</td>
+          </tr>
+          <tr>
+            <td>d</td>
+            <td>KeyD</td>
+            <td>68</td>
+            <td>d</td>
+            <td>&amp;#100;</td>
+            <td>lowercase d</td>
+          </tr>
+          <tr>
+            <td>e</td>
+            <td>KeyE</td>
+            <td>69</td>
+            <td>e</td>
+            <td>&amp;#101;</td>
+            <td>lowercase e</td>
+          </tr>
+          <tr>
+            <td>f</td>
+            <td>KeyF</td>
+            <td>70</td>
+            <td>f</td>
+            <td>&amp;#102;</td>
+            <td>lowercase f</td>
+          </tr>
+          <tr>
+            <td>g</td>
+            <td>KeyG</td>
+            <td>71</td>
+            <td>g</td>
+            <td>&amp;#103;</td>
+            <td>lowercase g</td>
+          </tr>
+          <tr>
+            <td>h</td>
+            <td>KeyH</td>
+            <td>72</td>
+            <td>h</td>
+            <td>&amp;#104;</td>
+            <td>lowercase h</td>
+          </tr>
+          <tr>
+            <td>i</td>
+            <td>KeyI</td>
+            <td>73</td>
+            <td>i</td>
+            <td>&amp;#105;</td>
+            <td>lowercase i</td>
+          </tr>
+          <tr>
+            <td>j</td>
+            <td>KeyJ</td>
+            <td>74</td>
+            <td>j</td>
+            <td>&amp;#106;</td>
+            <td>lowercase j</td>
+          </tr>
+          <tr>
+            <td>k</td>
+            <td>KeyK</td>
+            <td>75</td>
+            <td>k</td>
+            <td>&amp;#107;</td>
+            <td>lowercase k</td>
+          </tr>
+          <tr>
+            <td>l</td>
+            <td>KeyL</td>
+            <td>76</td>
+            <td>l</td>
+            <td>&amp;#108;</td>
+            <td>lowercase l</td>
+          </tr>
+          <tr>
+            <td>m</td>
+            <td>KeyM</td>
+            <td>77</td>
+            <td>m</td>
+            <td>&amp;#109;</td>
+            <td>lowercase m</td>
+          </tr>
+          <tr>
+            <td>n</td>
+            <td>KeyN</td>
+            <td>78</td>
+            <td>n</td>
+            <td>&amp;#110;</td>
+            <td>lowercase n</td>
+          </tr>
+          <tr>
+            <td>o</td>
+            <td>KeyO</td>
+            <td>79</td>
+            <td>o</td>
+            <td>&amp;#111;</td>
+            <td>lowercase o</td>
+          </tr>
+          <tr>
+            <td>p</td>
+            <td>KeyP</td>
+            <td>80</td>
+            <td>p</td>
+            <td>&amp;#112;</td>
+            <td>lowercase p</td>
+          </tr>
+          <tr>
+            <td>q</td>
+            <td>KeyQ</td>
+            <td>81</td>
+            <td>q</td>
+            <td>&amp;#113;</td>
+            <td>lowercase q</td>
+          </tr>
+          <tr>
+            <td>r</td>
+            <td>KeyR</td>
+            <td>82</td>
+            <td>r</td>
+            <td>&amp;#114;</td>
+            <td>lowercase r</td>
+          </tr>
+          <tr>
+            <td>s</td>
+            <td>KeyS</td>
+            <td>83</td>
+            <td>s</td>
+            <td>&amp;#115;</td>
+            <td>lowercase s</td>
+          </tr>
+          <tr>
+            <td>t</td>
+            <td>KeyT</td>
+            <td>84</td>
+            <td>t</td>
+            <td>&amp;#116;</td>
+            <td>lowercase t</td>
+          </tr>
+          <tr>
+            <td>u</td>
+            <td>KeyU</td>
+            <td>85</td>
+            <td>u</td>
+            <td>&amp;#117;</td>
+            <td>lowercase u</td>
+          </tr>
+          <tr>
+            <td>v</td>
+            <td>KeyV</td>
+            <td>86</td>
+            <td>v</td>
+            <td>&amp;#118;</td>
+            <td>lowercase v</td>
+          </tr>
+          <tr>
+            <td>w</td>
+            <td>KeyW</td>
+            <td>87</td>
+            <td>w</td>
+            <td>&amp;#119;</td>
+            <td>lowercase w</td>
+          </tr>
+          <tr>
+            <td>x</td>
+            <td>KeyX</td>
+            <td>88</td>
+            <td>x</td>
+            <td>&amp;#120;</td>
+            <td>lowercase x</td>
+          </tr>
+          <tr>
+            <td>y</td>
+            <td>KeyY</td>
+            <td>89</td>
+            <td>y</td>
+            <td>&amp;#121;</td>
+            <td>lowercase y</td>
+          </tr>
+          <tr>
+            <td>z</td>
+            <td>KeyZ</td>
+            <td>90</td>
+            <td>z</td>
+            <td>&amp;#122;</td>
+            <td>lowercase z</td>
+          </tr>
+          <tr>
+            <td>{</td>
+            <td>BracketLeft</td>
+            <td>219</td>
+            <td>{</td>
+            <td>&amp;#123;</td>
+            <td>left curly bracket</td>
+          </tr>
+          <tr>
+            <td>|</td>
+            <td>Backslash</td>
+            <td>220</td>
+            <td>|</td>
+            <td>&amp;#124;</td>
+            <td>vertical bar / pipe</td>
+          </tr>
+          <tr>
+            <td>}</td>
+            <td>BracketRight</td>
+            <td>221</td>
+            <td>}</td>
+            <td>&amp;#125;</td>
+            <td>right curly bracket</td>
+          </tr>
+          <tr>
+            <td>~</td>
+            <td>Backquote</td>
+            <td>192</td>
+            <td>~</td>
+            <td>&amp;#126;</td>
+            <td>tilda</td>
+          </tr>
+          <tr></tr>
+        </tbody>
+      </table>
+
+      <table>
+        <caption>Firefox Exceptions</caption>
+        <thead>
+          <tr>
+            <th scope="col">input</th>
+            <th scope="col">code</th>
+            <th scope="col">which</th>
+            <th scope="col">key</th>
+            <th scope="col">html</th>
+            <th scope="col">descr</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>;</td>
+            <td>Semicolon</td>
+            <td>59</td>
+            <td>;</td>
+            <td>&amp;#59;</td>
+            <td>semicolon</td>
+          </tr>
+          <tr>
+            <td>:</td>
+            <td>Semicolon</td>
+            <td>59</td>
+            <td>:</td>
+            <td>&amp;#58;</td>
+            <td>colon</td>
+          </tr>
+          <tr>
+            <td>=</td>
+            <td>Equal</td>
+            <td>61</td>
+            <td>=</td>
+            <td>&amp;#61;</td>
+            <td>equals</td>
+          </tr>
+          <tr>
+            <td>+</td>
+            <td>Equal</td>
+            <td>61</td>
+            <td>+</td>
+            <td>&amp;#43;</td>
+            <td>plus</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>Minus</td>
+            <td>173</td>
+            <td>-</td>
+            <td>&amp;#45;</td>
+            <td>minus</td>
+          </tr>
+          <tr>
+            <td>_</td>
+            <td>Minus</td>
+            <td>173</td>
+            <td>_</td>
+            <td>&amp;#95;</td>
+            <td>underscore</td>
+          </tr>
+          <tr></tr>
+        </tbody>
+      </table> 
+
+      <table>
+        <caption>Combinator Keys, Action Keys, and Non-Printing Keys</caption>
+        <thead>
+          <tr>
+            <th scope="col">input</th>
+            <th scope="col">code</th>
+            <th scope="col">which</th>
+            <th scope="col">key</th>
+            <th scope="col">html</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ctrl+<wbr>PauseBreak</td>
+            <td>Pause</td>
+            <td>3</td>
+            <td>Cancel</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Backspace</td>
+            <td>Backspace</td>
+            <td>8</td>
+            <td>Backspace</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Tab</td>
+            <td colspan="4">*no event registered</td>
+          </tr>
+          <tr>
+            <td>Enter</td>
+            <td>Enter</td>
+            <td>13</td>
+            <td>Enter</td>
+            <td>&amp;#13;</td>
+          </tr>
+          <tr>
+            <td>Shift</td>
+            <td>ShiftLeft</td>
+            <td>16</td>
+            <td>Shift</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Shift</td>
+            <td>ShiftRight</td>
+            <td>16</td>
+            <td>Shift</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Control</td>
+            <td>ControlLeft</td>
+            <td>17</td>
+            <td>Control</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Control</td>
+            <td>ControlRight</td>
+            <td>17</td>
+            <td>Control</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Alt</td>
+            <td>AltLeft</td>
+            <td>18</td>
+            <td>Alt</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Alt</td>
+            <td>AltRight</td>
+            <td>18</td>
+            <td>Alt</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Pause/Break</td>
+            <td>Pause</td>
+            <td>19</td>
+            <td>Pause</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>CapsLock</td>
+            <td>CapsLock</td>
+            <td>20</td>
+            <td>CapsLock</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Escape</td>
+            <td>Escape</td>
+            <td>27</td>
+            <td>Escape</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>PageUp</td>
+            <td>PageUp</td>
+            <td>33</td>
+            <td>PageUp</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>PageDown</td>
+            <td>PageDown</td>
+            <td>34</td>
+            <td>PageDown</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>End</td>
+            <td>End</td>
+            <td>35</td>
+            <td>End</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Home</td>
+            <td>Home</td>
+            <td>36</td>
+            <td>Home</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>PrtScr</td>
+            <td>PrintScreen</td>
+            <td>44</td>
+            <td>PrintScreen</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Insert</td>
+            <td>Insert</td>
+            <td>45</td>
+            <td>Insert</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Delete</td>
+            <td>Delete</td>
+            <td>46</td>
+            <td>Delete</td>
+            <td></td>
+          </tr>
+          <tr></tr>
+        </tbody>
+      </table>
+
+      <table>
+        <caption>numberpad (NumLock On)</caption>
+        <thead>
+          <tr>
+            <th scope="col">input</th>
+            <th scope="col">code</th>
+            <th scope="col">which</th>
+            <th scope="col">key</th>
+            <th scope="col">html</th>
+            <th scope="col">descr</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0</td>
+            <td>Numberpad0</td>
+            <td>96</td>
+            <td>0</td>
+            <td>&amp;#48;</td>
+            <td>0 on numberpad</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Numberpad1</td>
+            <td>97</td>
+            <td>1</td>
+            <td>&amp;#49;</td>
+            <td>1 on numberpad</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Numberpad2</td>
+            <td>98</td>
+            <td>2</td>
+            <td>&amp;#50;</td>
+            <td>2 on numberpad</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Numberpad3</td>
+            <td>99</td>
+            <td>3</td>
+            <td>&amp;#51;</td>
+            <td>3 on numberpad</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Numberpad4</td>
+            <td>100</td>
+            <td>4</td>
+            <td>&amp;#52;</td>
+            <td>4 on numberpad</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Numberpad5</td>
+            <td>101</td>
+            <td>5</td>
+            <td>&amp;#53;</td>
+            <td>5 on numberpad</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Numberpad6</td>
+            <td>102</td>
+            <td>6</td>
+            <td>&amp;#54;</td>
+            <td>6 on numberpad</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Numberpad7</td>
+            <td>103</td>
+            <td>7</td>
+            <td>&amp;#55;</td>
+            <td>7 on numberpad</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Numberpad8</td>
+            <td>104</td>
+            <td>8</td>
+            <td>&amp;#56;</td>
+            <td>8 on numberpad</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Numberpad9</td>
+            <td>105</td>
+            <td>9</td>
+            <td>&amp;#57;</td>
+            <td>9 on numberpad</td>
+          </tr>
+          <tr>
+            <td>*</td>
+            <td>Numberpad<wbr>Multiply</td>
+            <td>106</td>
+            <td>*</td>
+            <td>&amp;#42;</td>
+            <td>* on numberpad</td>
+          </tr>
+          <tr>
+            <td>+</td>
+            <td>Numberpad<wbr>Add</td>
+            <td>107</td>
+            <td>+</td>
+            <td>&amp;#43;</td>
+            <td>+ on numberpad</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>Numberpad<wbr>Subtract</td>
+            <td>109</td>
+            <td>-</td>
+            <td>&amp;#45;</td>
+            <td>- on numberpad</td>
+          </tr>
+          <tr>
+            <td>.</td>
+            <td>Numberpad<wbr>Decimal</td>
+            <td>110</td>
+            <td>.</td>
+            <td>&amp;#46;</td>
+            <td>. on numberpad</td>
+          </tr>
+          <tr>
+            <td>/</td>
+            <td>Numberpad<wbr>Divide</td>
+            <td>111</td>
+            <td>/</td>
+            <td>&amp;#47;</td>
+            <td>/ on numberpad</td>
+          </tr>
+          <tr></tr>
+        </tbody>
+      </table>
+
+      <table>
+        <caption>Numberpad (NumLock Off)</caption>
+        <thead>
+          <tr>
+            <th scope="col">input</th>
+            <th scope="col">code</th>
+            <th scope="col">which</th>
+            <th scope="col">key</th>
+            <th scope="col">descr</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Insert</td>
+            <td>Numberpad0</td>
+            <td>45</td>
+            <td>Insert</td>
+            <td>0 on numberpad</td>
+          </tr>
+          <tr>
+            <td>End</td>
+            <td>Numberpad1</td>
+            <td>35</td>
+            <td>End</td>
+            <td>1 on numberpad</td>
+          </tr>
+          <tr>
+            <td>ArrowDown</td>
+            <td>Numberpad2</td>
+            <td>40</td>
+            <td>ArrowDown</td>
+            <td>2 on numberpad</td>
+          </tr>
+          <tr>
+            <td>PageDown</td>
+            <td>Numberpad3</td>
+            <td>34</td>
+            <td>PageDown</td>
+            <td>3 on numberpad</td>
+          </tr>
+          <tr>
+            <td>ArrowLeft</td>
+            <td>Numberpad4</td>
+            <td>37</td>
+            <td>ArrowLeft</td>
+            <td>4 on numberpad</td>
+          </tr>
+          <tr>
+            <td>clear</td>
+            <td>Numberpad5</td>
+            <td>12</td>
+            <td>Clear</td>
+            <td>5 on numberpad</td>
+          </tr>
+          <tr>
+            <td>ArrowRight</td>
+            <td>Numberpad6</td>
+            <td>39</td>
+            <td>ArrowRight</td>
+            <td>6 on numberpad</td>
+          </tr>
+          <tr>
+            <td>Home</td>
+            <td>Numberpad7</td>
+            <td>36</td>
+            <td>Home</td>
+            <td>7 on numberpad</td>
+          </tr>
+          <tr>
+            <td>ArrowUp</td>
+            <td>Numberpad8</td>
+            <td>38</td>
+            <td>ArrowUp</td>
+            <td>8 on numberpad</td>
+          </tr>
+          <tr>
+            <td>PageUp</td>
+            <td>Numberpad9</td>
+            <td>33</td>
+            <td>PageUp</td>
+            <td>9 on numberpad</td>
+          </tr>
+          <tr>
+            <td>*</td>
+            <td>Numberpad<wbr>Multiply</td>
+            <td>106</td>
+            <td>*</td>
+            <td>* on numberpad</td>
+          </tr>
+          <tr>
+            <td>+</td>
+            <td>Numberpad<wbr>Add</td>
+            <td>107</td>
+            <td>+</td>
+            <td>+ on numberpad</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>Numberpad<wbr>Subtract</td>
+            <td>109</td>
+            <td>-</td>
+            <td>- on numberpad</td>
+          </tr>
+          <tr>
+            <td>Delete</td>
+            <td>Numberpad<wbr>Decimal</td>
+            <td>46</td>
+            <td>Delete</td>
+            <td>. on numberpad</td>
+          </tr>
+          <tr>
+            <td>/</td>
+            <td>Numberpad<wbr>Divide</td>
+            <td>111</td>
+            <td>/</td>
+            <td>/ on numberpad</td>
+          </tr>
+          <tr></tr>
+        </tbody>
+      </table>
+
+      <table>
+        <caption>Function Keys</caption>
+        <thead>
+          <tr>
+            <th scope="col">input</th>
+            <th scope="col">code</th>
+            <th scope="col">which</th>
+            <th scope="col">key</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>F1</td>
+            <td colspan="3">*no event registered</td>
+          </tr>
+          <tr>
+            <td>F2</td>
+            <td>F2</td>
+            <td>113</td>
+            <td>F2</td>
+          </tr>
+          <tr>
+            <td>F3</td>
+            <td colspan="3">*no event registered</td>
+          </tr>
+          <tr>
+            <td>F4</td>
+            <td colspan="3">*no event registered</td>
+          </tr>
+          <tr>
+            <td>F5</td>
+            <td>F5</td>
+            <td>116</td>
+            <td>F5</td>
+          </tr>
+          <tr>
+            <td>F6</td>
+            <td colspan="3">*no event registered</td>
+          </tr>
+          <tr>
+            <td>F7</td>
+            <td colspan="3">*no event registered</td>
+          </tr>
+          <tr>
+            <td>F8</td>
+            <td>F8</td>
+            <td>119</td>
+            <td>F8</td>
+          </tr>
+          <tr>
+            <td>F9</td>
+            <td>F9</td>
+            <td>120</td>
+            <td>F9</td>
+          </tr>
+          <tr>
+            <td>F10</td>
+            <td colspan="3">*no event registered</td>
+          </tr>
+          <tr>
+            <td>F11</td>
+            <td>F11</td>
+            <td>122</td>
+            <td>F11</td>
+          </tr>
+          <tr>
+            <td>F12</td>
+            <td colspan="3">*no event registered</td>
+          </tr>
+          <tr></tr>
+        </tbody>
+      </table>
+
+    </article>
+  </section>
+
+  <script src="../js/app.js"></script>
+  <!-- <script src="../js/keyup.js"></script> -->
+</body>
+</html>

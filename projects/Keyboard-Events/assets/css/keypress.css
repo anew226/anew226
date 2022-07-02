@@ -1,0 +1,7 @@
+:root{
+    --accent-color: rgb(0, 236, 12);
+}
+
+nav li:nth-of-type(3) {
+    background-color: var(--accent-color);
+}

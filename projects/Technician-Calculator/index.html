@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!-- Default HTML 5 Boilerplate (Feb 2021) -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/style.css">
+  <title>Hydraulic Calculations</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+            <li><button id="home">Home</button></li>
+            <li>
+                <select class="select" name="unitSelector" onchange="if (this.selectedIndex) unitSelection(value)">
+                <option value="0" selected disabled>Select PN</option>
+                <option value="31073">31073</option>
+                <option value="31077">31077</option>
+                <option value="282700">282700</option>
+                <option value="282800">282800</option>
+                <option value="282900">282900</option>
+                <option value="283200">283200</option>
+                </select>
+            </li>
+            <li><button id="clear">Clear All</button></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="unitDescriptions">
+    <h2 class="show">Select PN from dropdown box</h2>
+    <h2>PN:31073 - Servocontrol, Aileron ATA&nbsp;27&#8209;14&#8209;51</h2>
+    <h2>PN:31077 - Servocontrol, Spoiler ATA&nbsp;27&#8209;64&#8209;51</h2>
+    <h2>PN:282700 - Actuator, Power Control, Elevator ATA&nbsp;27&#8209;30&#8209;07</h2>
+    <h2>PN:282800 - Actuator, Power Control, Inboard Aileron ATA&nbsp;27&#8209;10&#8209;03</h2>
+    <h2>PN:282900 - Actuator, Power Control, Rudder ATA&nbsp;27&#8209;20&#8209;06</h2>
+    <h2>PN:283200 - Actuator, Power Control, Outboard Aileron ATA&nbsp;27&#8209;10&#8209;02</h2>
+    </section>
+    <section class="calculations">
+    <!-- Speed Calculations 31073 ATA 27-14-51 & 31077 ATA 27-64-51 -->
+    <div id="speed">
+        <h3>Speed</h3>
+        <aside class="formulaDisplay">
+        <p class="speed">distance (inches)</p>
+        <hr class="hr_DistOverTime speed">
+        <p class="denominator speed">time (seconds)</p>
+        </aside>
+        <p>Stroke:</p>
+        <input type="number" name="stroke" id="stroke" oninput="speedCalc(), kDamping();">
+        <p>Enter time to complete stroke in seconds:</p>
+        <input type="number" name="strokeTime" id="time" oninput="speedCalc();">
+        <p>
+        <span id="displaySpeedin">____</span> inches/sec
+        </p>
+        <p>
+        <span id="displaySpeedmm">____</span> mm/sec
+        </p>
+
+    </div>
+    <div id="lvdt">
+        <!-- LVDT Gain calculations 31073 ATA 27-14-51 & 31077 ATA 27-64-51 -->
+        <h3>LVDT Gain</h3>
+        <aside class="formulaDisplay">
+        <p class="lvdt">U1 - U2</p>
+        <hr class="hr_lvdt lvdt">
+        <p class="denominator lvdt">U1 + U2</p>
+        </aside>
+        <p>U1:</p>
+        <input type="number" name="u1" id="u1" oninput="gain();">
+        <p>U2:</p>
+        <input type="number" name="u2" id="u2" oninput="gain();">
+        <p>R2 = <span id=displayR2>____</span></p>
+
+    </div>
+    <div id="sealFriction">
+        <!-- Piston Seal Friction Calculations 31077 ATA 27-64-51 -->
+        <h3>Seal Friction</h3>
+        <aside class="formulaDisplay SealFric">
+        <p class="FP1">FP1: 57.3 psi = 135 lbf</p>
+        <p class="denominator FP2">FP2: 46.7 psi = 146 lbf</p>
+        </aside>
+        <p>Enter psi read from gauge for FP1 Ext:</p>
+        <input type="number" name="p1" id="p1" oninput="sealFriction();">
+        <p>Enter psi read from gauge for FP2 Ret:</p>
+        <input type="number" name="p2" id="p2" oninput="sealFriction();">
+        <p>Seal friction = <span id="displayFP1">____</span> lbf FP1 Ext</p>
+        <p>Seal friction = <span id="displayFP2">____</span> lbf FP2 Ret</p>
+
+    </div>
+    <div id="dampingCoefficient">
+        <!-- Damping Coefficient Calculations 31073 ATA 27-14-51 -->
+        <h3>Damping Coefficient</h3>
+        <aside class="formulaDisplay">
+        <p class="K">K = </p>
+        <p class="Force dampCoef">Force (lbf)</p>
+        <hr class="hr_DampingCoeff dampCoef">
+        <p class="denominator dampCoef">Speed<sup>2</sup></p>
+        </aside>
+        <p>Enter Force measured on load cell while actuator is in motion (Example: 1125lbf):</p>
+        <input type="number" name="force" id="force" oninput="kDamping();">
+        <p>Enter Time for dynamic load to pull actuator from Full Retract to Full Extend (in seconds):</p>
+        <input type="number" name="timeDC" id="timeDC" oninput="kDamping();">
+        <p id="stroke_C">Length of stroke: <span id="displayStroke">____</span> inches</p>
+        <p>K Damping Coefficient = <span id="displayKDamping">____</span></p>
+    </div>
+    <div id="null_282700">
+        <!-- Null Adjustment 282700 ATA 27-30-07 -->
+        <h3>Null Adjustment 282700</h3>
+        <p>Enter deviation from neutral:</p>
+        <p>Note: + values towards extend / -&nbsp;values&nbsp;towards&nbsp;retract</p>
+        <input type="number" name="devNull_282700" id="devNull_282700" oninput="nullAdjust_282700();">
+        <p>You are on tooth = <span id="displayTooth_282700">____</span></p>
+        <p>Adjustment = <span id="displayAdjust_282700_1">____</span></p>
+        <p><span id="displayAdjust_282700_2">____</span></p>
+    </div>
+    <div id="null_282800">
+        <!-- Null Adjustment 282800 ATA 27-10-03 -->
+        <h3>Null Adjustment 282800</h3>
+        <p>Enter deviation from neutral:</p>
+        <p>Note: + values towards extend / -&nbsp;values&nbsp;towards&nbsp;retract</p>
+        <input type="number" name="devNull_282800" id="devNull_282800" oninput="nullAdjust_282800();">
+        <p>You are on tooth = <span id="displayTooth_282800">____</span></p>
+        <p>Adjustment = <span id="displayAdjust_282800_1">____</span></p>
+        <p><span id="displayAdjust_282800_2">____</span></p>
+    </div>
+    <div id="null_282900">
+        <!-- Null Adjustment 282900 ATA 27-20-06 -->
+        <h3>Null Adjustment 282900</h3>
+        <p>Enter deviation from neutral:</p>
+        <p>Note: + values towards extend / -&nbsp;values&nbsp;towards&nbsp;retract</p>
+        <input type="number" name="devNull_282900" id="devNull_282900" oninput="nullAdjust_282900();">
+        <p>You are on tooth = <span id="displayTooth_282900">____</span></p>
+        <p>Adjustment = <span id="displayAdjust_282900_1">____</span></p>
+        <p><span id="displayAdjust_282900_2">____</span></p>
+    </div>
+    <div id="null_283200">
+        <h3>Null Adjustment 283200</h3>
+        <p>Enter deviation from neutral:</p>
+        <p>Note: + values towards extend / -&nbsp;values&nbsp;towards&nbsp;retract</p>
+        <input type="number" name="devNull_283200" id="devNull_283200" oninput="nullAdjust_283200();">
+        <p>You are on tooth = <span id="displayTooth_283200">____</span></p>
+        <p>Adjustment = <span id="displayAdjust_283200_1">____</span></p>
+        <p><span id="displayAdjust_283200_2">____</span></p>
+    </div>
+    <div id="graph">
+        <!-- Visual Display of Null Adjustments -->
+        <h3>Measurement Accuracy</h3>
+        <p><span id="currToothDeviation">____</span></p>
+        <aside class="graph_results">
+        <p>V</p>
+        <aside id="graph_draw">&#9711;&#9711;&#9711;&#9711;&#9711;--&#9711;&#9711;&#9711;&#9711;&#9711;</aside>
+        </aside>
+        <p>Accuracy = <span id="accuracy">____</span></p>
+    </div>
+    <div>
+        <!-- placeholder 1 -->
+        <h3>Hydraulic Calculations</h3>  
+        <p>Speed</p>
+        <p>LVDT</p>
+        <p>Piston Seal Friction</p>
+        <p>Damping Coefficient</p>
+        <p>Null Adjustments</p>
+    </div>
+    <div>
+        <!-- placeholder 2 -->
+        <h3>Part Numbers</h3>  
+        <p>31077</p>
+        <p>31073</p>
+        <p>282700</p>
+        <p>282800</p>
+        <p>282900</p>
+        <p>283200</p>
+    </div>
+    <div>
+        <!-- placeholder 3 -->
+        <h3>ATA</h3>  
+        <p>ATA&nbsp;27&#8209;64&#8209;51</p>
+        <p>ATA&nbsp;27&#8209;14&#8209;51</p>
+        <p>ATA&nbsp;27&#8209;30&#8209;07</p>
+        <p>ATA&nbsp;27&#8209;10&#8209;03</p>
+        <p>ATA&nbsp;27&#8209;20&#8209;06</p>
+        <p>ATA&nbsp;27&#8209;10&#8209;02</p>
+    </div>
+  </section> 
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
