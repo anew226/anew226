@@ -1,4 +1,4 @@
-function originalWidth() {
+/* function originalWidth() {
   let imgs = document.querySelectorAll('.post img');
   for (let i = 0; i < imgs.length; i++) {
     let width = imgs[i].naturalWidth;
@@ -12,3 +12,4 @@ function originalWidth() {
 }
 
 window.onload = originalWidth();
+*/
