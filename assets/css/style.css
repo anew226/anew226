@@ -140,7 +140,7 @@ section article {
 section main {
   height: 100vh;
   background: var(--bg-color-default-header);
-  background-image: url("https://airplanes.itsabouttravelling.com/wp-content/uploads/2017/06/n403ua-united-airlines-airbus-a320-02.jpg");
+  background-image: url("https://raw.githubusercontent.com/anew226/anew226/main/assets/pics/background_main.png");
   background-repeat: no-repeat;
   background-position: top;
   background-attachment: fixed;
