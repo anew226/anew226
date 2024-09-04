@@ -1,5 +1,5 @@
 <p align="center">
-<img alt="my banner" width="150px" src="LapTop_WithAvatar.svg">
+<img alt="my banner" width="250px" src="LapTop_WithAvatar.svg">
 </p>
 
 <h3 align="center">Hi, I'm Andrew</h3>
