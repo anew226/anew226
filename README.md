@@ -8,7 +8,8 @@ I have been learning web development as a hobby for the last for the past few ye
 
 ---
 
-[![Anurag’s github stats](https://github-readme-stats.vercel.app/api?username=anew226)](https://github.com/anew226)
+<!--[![Anurag’s github stats](https://github-readme-stats.vercel.app/api?username=anew226)](https://github.com/anew226)-->
 [![Anurag's GitHub stats](https://github-stats-extended.vercel.app/api?username=anew226)](https://github.com/anew226)
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anew226&layout=compact)](https://github.com/anew226)
+<!--[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anew226&layout=compact)](https://github.com/anew226)-->
+[![Top Langs](https://github-readme-stats-extended.vercel.app/api/top-langs/?username=anew226&layout=compact)](https://github.com/anew226)
